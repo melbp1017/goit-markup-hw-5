@@ -125,10 +125,20 @@ body {
 }
 
 .main-header-menu-list-items:hover,
-.contact-header-menu-list-items:hover {
+.contact-header-menu-list-items:hover .active {
     color: var(--ocean);
-}
 
+}
+.active::after{
+    content: "";
+    display: block;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--ocean);
+    position:relative;
+    top:20px;
+
+}
 /*section Styles*/
 
 /*hero section*/
@@ -579,7 +589,7 @@ body {
     flex-shrink: 0;
     width: 1128px;
     list-style: none;
-
+overflow: hidden;
 
 }
 
@@ -595,38 +605,43 @@ body {
     flex-shrink: 0;
     border: 1px solid var(--cornflower);
     background: white;
-
-    position: relative;
-    overflow: hidden;
+  
 }
-
+.cards-image{
+    position:relative;
+    overflow:hidden;
+}
 
 .cards-overlay {
-    display: none;
     position: absolute;
     background-color: var(--iris);
-    width: 360px;
-    height: 300px;
-    flex-shrink: 0;
-}
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    opacity:0;
 
+    transform: translatey(100%);
+   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+    
 .overlay-info {
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5em;
-
     color: var(--cloud);
-    /* 150% */
     letter-spacing: 0.32px;
     text-align: justify;
     padding: 40px 32px 164px 32px;
+    
 }
 
 .cards:hover .cards-overlay {
-    display: block;
+    opacity:1;
     transform: translatey(0);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
-}
+}*/
 
 .cards-info {
     display: flex;
@@ -644,11 +659,13 @@ body {
     font-weight: 500;
     line-height: 1.2em;
     letter-spacing: 0.4px;
+    
 }
 
 .project-cards-item {
     flex: 0 0 calc(33.33% - 20px);
-    margin-bottom: 48px
+    margin-bottom: 48px;
+    
 }
 
 .project-cards-item img {
